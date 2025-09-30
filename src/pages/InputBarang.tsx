@@ -41,6 +41,14 @@ export default function InputBarang() {
     });
   };
 
+  // Handle physical barcode scanner input (Enter key)
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleScanSubmit(e as any);
+    }
+  };
+
   const handleRemoveDevice = (index: number) => {
     setScannedDevices(scannedDevices.filter((_, i) => i !== index));
   };
@@ -181,8 +189,9 @@ export default function InputBarang() {
                     placeholder="Scan barcode atau ketik Serial Number..."
                     value={scanInput}
                     onChange={(e) => setScanInput(e.target.value)}
+                    onKeyDown={handleKeyDown}
                     className="flex-1"
-                    autoFocus={isScanning}
+                    autoFocus
                   />
                   <Button type="submit" className="bg-gradient-primary">
                     <Plus className="mr-2 h-4 w-4" />

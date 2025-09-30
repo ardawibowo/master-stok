@@ -11,6 +11,8 @@ import LaporanWarehouse from "./pages/LaporanWarehouse";
 import LaporanPemasangan from "./pages/LaporanPemasangan";
 import MasterTeknisi from "./pages/MasterTeknisi";
 import MasterWarehouse from "./pages/MasterWarehouse";
+import MasterBrand from "./pages/MasterBrand";
+import MasterType from "./pages/MasterType";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +32,8 @@ const App = () => (
             <Route path="/laporan-pemasangan" element={<LaporanPemasangan />} />
             <Route path="/master-teknisi" element={<MasterTeknisi />} />
             <Route path="/master-warehouse" element={<MasterWarehouse />} />
+            <Route path="/master-brand" element={<MasterBrand />} />
+            <Route path="/master-type" element={<MasterType />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
