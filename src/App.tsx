@@ -9,6 +9,7 @@ import InputBarang from "./pages/InputBarang";
 import PengeluaranBarang from "./pages/PengeluaranBarang";
 import LaporanWarehouse from "./pages/LaporanWarehouse";
 import LaporanPemasangan from "./pages/LaporanPemasangan";
+import InputPemasangan from "./pages/InputPemasangan";
 import MasterTeknisi from "./pages/MasterTeknisi";
 import MasterWarehouse from "./pages/MasterWarehouse";
 import MasterBrand from "./pages/MasterBrand";
@@ -27,10 +28,11 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/input-barang" element={<InputBarang />} />
-            <Route path="/pengeluaran-barang" element={<PengeluaranBarang />} />
-            <Route path="/laporan-warehouse" element={<LaporanWarehouse />} />
-            <Route path="/laporan-pemasangan" element={<LaporanPemasangan />} />
-            <Route path="/master-teknisi" element={<MasterTeknisi />} />
+          <Route path="/pengeluaran-barang" element={<PengeluaranBarang />} />
+          <Route path="/laporan-warehouse" element={<LaporanWarehouse />} />
+          <Route path="/laporan-pemasangan" element={<LaporanPemasangan />} />
+          <Route path="/input-pemasangan" element={<InputPemasangan />} />
+          <Route path="/master-teknisi" element={<MasterTeknisi />} />
             <Route path="/master-warehouse" element={<MasterWarehouse />} />
             <Route path="/master-brand" element={<MasterBrand />} />
             <Route path="/master-type" element={<MasterType />} />

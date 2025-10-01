@@ -4,6 +4,7 @@ import {
   PackageMinus, 
   Warehouse, 
   ClipboardList, 
+  CheckCircle,
   Users, 
   Building2,
   Tag,
@@ -33,6 +34,7 @@ const mainMenuItems = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
   { title: "Input Barang", url: "/input-barang", icon: PackagePlus },
   { title: "Pengeluaran Barang", url: "/pengeluaran-barang", icon: PackageMinus },
+  { title: "Input Pemasangan", url: "/input-pemasangan", icon: CheckCircle },
   { title: "Laporan Warehouse", url: "/laporan-warehouse", icon: Warehouse },
   { title: "Laporan Pemasangan", url: "/laporan-pemasangan", icon: ClipboardList },
 ];
