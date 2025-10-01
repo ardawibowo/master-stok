@@ -9,6 +9,7 @@ import {
   Building2,
   Tag,
   Cpu,
+  UserCircle,
   ChevronDown
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
@@ -40,6 +41,7 @@ const mainMenuItems = [
 ];
 
 const masterDataItems = [
+  { title: "Master Customer", url: "/master-customer", icon: UserCircle },
   { title: "Master Teknisi", url: "/master-teknisi", icon: Users },
   { title: "Master Warehouse", url: "/master-warehouse", icon: Building2 },
   { title: "Master Brand", url: "/master-brand", icon: Tag },

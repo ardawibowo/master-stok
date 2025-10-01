@@ -10,6 +10,7 @@ import PengeluaranBarang from "./pages/PengeluaranBarang";
 import LaporanWarehouse from "./pages/LaporanWarehouse";
 import LaporanPemasangan from "./pages/LaporanPemasangan";
 import InputPemasangan from "./pages/InputPemasangan";
+import MasterCustomer from "./pages/MasterCustomer";
 import MasterTeknisi from "./pages/MasterTeknisi";
 import MasterWarehouse from "./pages/MasterWarehouse";
 import MasterBrand from "./pages/MasterBrand";
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/laporan-warehouse" element={<LaporanWarehouse />} />
           <Route path="/laporan-pemasangan" element={<LaporanPemasangan />} />
           <Route path="/input-pemasangan" element={<InputPemasangan />} />
+          <Route path="/master-customer" element={<MasterCustomer />} />
           <Route path="/master-teknisi" element={<MasterTeknisi />} />
             <Route path="/master-warehouse" element={<MasterWarehouse />} />
             <Route path="/master-brand" element={<MasterBrand />} />
