@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle, Search, Calendar as CalendarIcon, Car, Package } from "lucide-react";
+import { CheckCircle, Search, Calendar as CalendarIcon, Car } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface Device {
@@ -27,7 +27,7 @@ export default function InputPemasangan() {
   const [customerId, setCustomerId] = useState("");
   const [customerName, setCustomerName] = useState("");
   const [licensePlate, setLicensePlate] = useState("");
-  const [equipmentType, setEquipmentType] = useState("");
+  const [deviceType, setDeviceType] = useState("");
   const [accessories, setAccessories] = useState("");
   const [installDate, setInstallDate] = useState(new Date().toISOString().slice(0, 16));
   const [notes, setNotes] = useState("");
@@ -51,6 +51,7 @@ export default function InputPemasangan() {
     { id: "CUST003", name: "UD Karya Mandiri" },
   ];
 
+  const deviceTypes = ["FMB910", "FMB920", "GT06N", "AT4", "1080p HD", "4K Dashcam"];
   const accessoriesList = ["Kabel Power", "Mic External", "Relay", "Antena GPS", "Buzzer", "LED Indicator"];
 
   const filteredDevices = technicianDevices.filter((device) => {
@@ -87,7 +88,7 @@ export default function InputPemasangan() {
       return;
     }
 
-    if (!customerId || !customerName || !licensePlate || !equipmentType) {
+    if (!customerId || !customerName || !licensePlate || !deviceType) {
       toast({
         title: "Error",
         description: "Lengkapi data customer dan kendaraan",
@@ -107,7 +108,7 @@ export default function InputPemasangan() {
     setCustomerId("");
     setCustomerName("");
     setLicensePlate("");
-    setEquipmentType("");
+    setDeviceType("");
     setAccessories("");
     setNotes("");
     setInstallDate(new Date().toISOString().slice(0, 16));
@@ -267,31 +268,32 @@ export default function InputPemasangan() {
                 </div>
               </div>
 
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label>Nomor Polisi *</Label>
-                  <div className="relative">
-                    <Car className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      value={licensePlate}
-                      onChange={(e) => setLicensePlate(e.target.value.toUpperCase())}
-                      placeholder="B 1234 XYZ"
-                      className="pl-9"
-                    />
-                  </div>
+              <div className="space-y-2">
+                <Label>Nomor Polisi *</Label>
+                <div className="relative">
+                  <Car className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    value={licensePlate}
+                    onChange={(e) => setLicensePlate(e.target.value.toUpperCase())}
+                    placeholder="B 1234 XYZ"
+                    className="pl-9"
+                  />
                 </div>
+              </div>
 
-                <div className="space-y-2">
-                  <Label>Type Alat *</Label>
-                  <div className="relative">
-                    <Package className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      value={equipmentType}
-                      onChange={(e) => setEquipmentType(e.target.value)}
-                      placeholder="Mobil Box, Truk, dll"
-                      className="pl-9"
-                    />
-                  </div>
+              <div className="space-y-2">
+                <Label>Type *</Label>
+                <div className="flex flex-wrap gap-2">
+                  {deviceTypes.map((type) => (
+                    <Badge
+                      key={type}
+                      variant={deviceType === type ? "default" : "outline"}
+                      className="cursor-pointer hover:bg-primary hover:text-primary-foreground"
+                      onClick={() => setDeviceType(type)}
+                    >
+                      {type}
+                    </Badge>
+                  ))}
                 </div>
               </div>
 
