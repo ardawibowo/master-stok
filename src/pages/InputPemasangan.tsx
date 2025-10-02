@@ -27,7 +27,7 @@ export default function InputPemasangan() {
   const [customerId, setCustomerId] = useState("");
   const [customerName, setCustomerName] = useState("");
   const [licensePlate, setLicensePlate] = useState("");
-  const [deviceType, setDeviceType] = useState("");
+  const [deviceTypes, setDeviceTypes] = useState<string[]>([]);
   const [accessories, setAccessories] = useState("");
   const [installDate, setInstallDate] = useState(new Date().toISOString().slice(0, 16));
   const [notes, setNotes] = useState("");
@@ -51,7 +51,7 @@ export default function InputPemasangan() {
     { id: "CUST003", name: "UD Karya Mandiri" },
   ];
 
-  const deviceTypes = ["FMB910", "FMB920", "GT06N", "AT4", "1080p HD", "4K Dashcam"];
+  const deviceTypesList = ["FMB910", "FMB920", "GT06N", "AT4", "1080p HD", "4K Dashcam"];
   const accessoriesList = ["Kabel Power", "Mic External", "Relay", "Antena GPS", "Buzzer", "LED Indicator"];
 
   const filteredDevices = technicianDevices.filter((device) => {
@@ -88,7 +88,7 @@ export default function InputPemasangan() {
       return;
     }
 
-    if (!customerId || !customerName || !licensePlate || !deviceType) {
+    if (!customerId || !customerName || !licensePlate || deviceTypes.length === 0) {
       toast({
         title: "Error",
         description: "Lengkapi data customer dan kendaraan",
@@ -108,7 +108,7 @@ export default function InputPemasangan() {
     setCustomerId("");
     setCustomerName("");
     setLicensePlate("");
-    setDeviceType("");
+    setDeviceTypes([]);
     setAccessories("");
     setNotes("");
     setInstallDate(new Date().toISOString().slice(0, 16));
@@ -282,14 +282,20 @@ export default function InputPemasangan() {
               </div>
 
               <div className="space-y-2">
-                <Label>Type *</Label>
+                <Label>Type * (bisa pilih lebih dari 1)</Label>
                 <div className="flex flex-wrap gap-2">
-                  {deviceTypes.map((type) => (
+                  {deviceTypesList.map((type) => (
                     <Badge
                       key={type}
-                      variant={deviceType === type ? "default" : "outline"}
+                      variant={deviceTypes.includes(type) ? "default" : "outline"}
                       className="cursor-pointer hover:bg-primary hover:text-primary-foreground"
-                      onClick={() => setDeviceType(type)}
+                      onClick={() => {
+                        if (deviceTypes.includes(type)) {
+                          setDeviceTypes(deviceTypes.filter(t => t !== type));
+                        } else {
+                          setDeviceTypes([...deviceTypes, type]);
+                        }
+                      }}
                     >
                       {type}
                     </Badge>
